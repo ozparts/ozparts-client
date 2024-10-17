@@ -1,9 +1,14 @@
 import { LANGUAGE_TO_COUNTRY } from "../types/index.js";
 
 export const mapLanguageToCountry = (language: string): string => {
-  const [langCode] = language.split("-");
+  const [languageSubtag, countrySubtag] = language.split("-");
 
-  return LANGUAGE_TO_COUNTRY.get(language) || langCode?.toUpperCase() || "";
+  return (
+    LANGUAGE_TO_COUNTRY.get(language) ||
+    countrySubtag?.toUpperCase() ||
+    languageSubtag?.toUpperCase() ||
+    ""
+  );
 };
 
 export const getCountryFromNavigator = (): string => {

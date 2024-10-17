@@ -1,9 +1,11 @@
 {
-    "compilerOptions": {
-        "target": "ES6",
-        "outDir": "./dist",
-        "rootDir": "./src",
-        "noEmitOnError": true,
-        "module": "Node16"
-    }
+  "compilerOptions": {
+    "target": "ES6",
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "noEmitOnError": true,
+    "module": "Node16",
+    "declaration": true,
+    "sourceMap": true
+  }
 }
