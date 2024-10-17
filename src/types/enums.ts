@@ -1,0 +1,15 @@
+export const LANGUAGE_TO_COUNTRY = new Map([
+  ["en-US", "US"],
+  ["en-GB", "GB"],
+  ["en-AU", "AU"],
+  ["en-CA", "CA"],
+  ["es-ES", "ES"],
+  ["fr-FR", "FR"],
+  ["de-DE", "DE"],
+  ["it-IT", "IT"],
+  ["ja-JP", "JP"],
+  ["ko-KR", "KR"],
+  ["zh-CN", "CN"],
+  ["ru-RU", "RU"],
+  ["pl-PL", "PL"],
+]);
