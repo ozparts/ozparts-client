@@ -1,1 +1,1 @@
-export * from "./helperFunctions.js";
+export * from "./helperFunctions";
