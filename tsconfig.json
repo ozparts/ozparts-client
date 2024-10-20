@@ -6,6 +6,6 @@
     "noEmitOnError": true,
     "declaration": true,
     "sourceMap": true,
-    "module": "CommonJS"
+    "esModuleInterop": true
   }
 }

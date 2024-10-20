@@ -1,4 +1,4 @@
-import { LANGUAGE_TO_COUNTRY } from "../types";
+import { LANGUAGE_TO_COUNTRY } from "../types/index.js";
 
 export const mapLanguageToCountry = (language: string): string => {
   const [languageSubtag, countrySubtag] = language.split("-");

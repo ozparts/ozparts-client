@@ -1,4 +1,4 @@
-import { mapLanguageToCountry } from "./helperFunctions";
+import { mapLanguageToCountry } from "./helperFunctions.js";
 
 describe("mapLanguageToCountry", () => {
   it("should return the country code when the language is in the LANGUAGE_TO_COUNTRY map", () => {

@@ -2,15 +2,28 @@
   "name": "ozparts-client",
   "version": "1.0.0",
   "description": "Ozparts 3C Client",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "types": "dist/cjs/index.d.ts",
   "scripts": {
-    "build": "tsc",
+    "build:cjs": "npx tsc -p tsconfig.cjs.json",
+    "build:esm": "npx tsc -p tsconfig.esm.json",
+    "build": "npm run build:cjs && npm run build:esm",
     "test": "jest",
+    "prepare": "npm run build",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "watch": "tsc-watch --onSuccess \"node dist/index.js\""
   },
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    }
+  },
+  "files": [
+    "dist/**/*"
+  ],
   "keywords": [],
   "type": "module",
   "author": "",

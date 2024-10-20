@@ -1,5 +1,5 @@
-import { Country } from "../types";
-import { getCountryFromNavigator } from "../utils/helperFunctions";
+import { Country } from "../types/index.js";
+import { getCountryFromNavigator } from "../utils/helperFunctions.js";
 
 const BASE_URL = "https://api.ozparts.eu";
 
