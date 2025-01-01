@@ -2,13 +2,11 @@
   "name": "ozparts-client",
   "version": "1.0.0",
   "description": "Ozparts 3C Client",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
-  "types": "dist/cjs/index.d.ts",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "build:cjs": "npx tsc -p tsconfig.cjs.json",
-    "build:esm": "npx tsc -p tsconfig.esm.json",
-    "build": "npm run build:cjs && npm run build:esm",
+    "build": "npx tsc -p tsconfig.json",
     "test": "jest",
     "prepare": "npm run build",
     "test:watch": "jest --watch",
@@ -16,16 +14,12 @@
     "watch": "tsc-watch --onSuccess \"node dist/index.js\""
   },
   "exports": {
-    ".": {
-      "import": "./dist/esm/index.js",
-      "require": "./dist/cjs/index.js"
-    }
+    ".": "./dist/index.js"
   },
   "files": [
     "dist/**/*"
   ],
   "keywords": [],
-  "type": "module",
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -38,5 +32,38 @@
     "tsc-watch": "^6.2.0",
     "typescript": "^5.6.3",
     "typescript-eslint": "^8.8.1"
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
+    "extensionsToTreatAsEsm": [
+      ".ts",
+      ".tsx"
+    ],
+    "transform": {
+      "^.+\\.tsx?$": [
+        "ts-jest",
+        {
+          "useESM": true
+        }
+      ]
+    },
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx",
+      "json",
+      "node"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/*.test.ts"
+    ],
+    "transformIgnorePatterns": [
+      "<rootDir>/node_modules/"
+    ]
   }
 }
