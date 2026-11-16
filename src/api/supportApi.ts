@@ -1,19 +1,27 @@
 import { Country } from "../types/index.js";
-import { getCountryFromNavigator } from "../utils/helperFunctions.js";
+import {
+  filterAllowedCountry,
+  getCountryFromNavigator,
+} from "../utils/helperFunctions.js";
 
 const BASE_URL = "https://api.ozparts.eu";
 
+// Detects the user's country: first from the browser languages, then (optionally) from the server.
+// allowedCountries: the countries the project ships to. When given, only one of them is returned;
+// if neither the browser nor the server gives an allowed country, the result is "" and the
+// project picks its own default.
 export const checkUserCountry = async (
-  checkOnServer: boolean = false
+  checkOnServer: boolean = false,
+  allowedCountries?: string[]
 ): Promise<string> => {
-  const country = getCountryFromNavigator();
+  const country = getCountryFromNavigator(allowedCountries);
 
   if (country) return country;
 
   if (checkOnServer) {
     const country = await getCountry();
 
-    return country.code;
+    return filterAllowedCountry(country.code, allowedCountries);
   }
 
   return "";
